@@ -16,9 +16,15 @@
                 header('WWW-Authenticate: Basic realm="My Realm"');
                 header('HTTP/1.0 401 Unauthorized');
                 echo 'Incorrect username or password';
-            }
+            } else {
+                
+                $response = array(
+                    "data" => $result,
+                    "message" => "Success"
+                );
 
-            echo json_encode($result);
+                echo json_encode($response);
+            }
 
             break;
         

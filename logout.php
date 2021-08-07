@@ -1,4 +1,5 @@
 <?php
+    header('Content-Type: application/json');
     include("user.php");
     $request_method = $_SERVER["REQUEST_METHOD"];
 
@@ -6,11 +7,16 @@
         case 'GET':
             
             $user = new User();
-            
+
             // logout user
             $result = $user->logout();
             
-            echo "Logout successful. See you next time!";
+            $response = array(
+                "data" => [],
+                "message" => "Success"
+            );
+
+            echo json_encode($response);
 
             break;
         
